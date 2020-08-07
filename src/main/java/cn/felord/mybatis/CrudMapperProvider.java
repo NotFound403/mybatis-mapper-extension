@@ -139,15 +139,16 @@ public class CrudMapperProvider {
      */
     private void insert(Configuration configuration) {
         String insertId = mapperInterface.getName().concat(".").concat("insert");
-
+         // xml配置中已经注册就跳过  xml中的优先级最高
         if (existStatement(configuration,insertId)){
             return;
         }
+        // 生成数据库的字段列表
         String[] COLUMNS = columnFields.stream()
                 .map(Field::getName)
                 .map(CrudMapperProvider::camelCaseToMapUnderscore)
                 .toArray(String[]::new);
-
+        // 对应的值 用 #{} 包裹
         String[] VALUES = columnFields.stream()
                 .map(Field::getName)
                 .map(name -> String.format("#{%s}", name))
@@ -159,10 +160,8 @@ public class CrudMapperProvider {
                 .INTO_VALUES(VALUES)
                 .toString();
 
-
-
         Map<String, Object> additionalParameters = new HashMap<>();
-
+        // 注册
         doAddMappedStatement(configuration, insertId, insertSQL, SqlCommandType.INSERT, entityType, additionalParameters);
     }
 
