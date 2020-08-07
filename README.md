@@ -29,7 +29,7 @@
             <version>1.0.0.RELEASE</version>
         </dependency>
 ``` 
-<span style="color: red">请注意mybatis-mapper-extension并没有加入Maven中央仓库,需要自行编译</span>
+❤️ **mybatis-mapper-extension并没有加入Maven中央仓库,需要自行编译**
 ## 配置
 - 需要使用注解`@MapperScan`配置`factoryBean`为`cn.felord.mybatis.MybatisMapperFactoryBean.class`。 
 - 需要配置`mybatis.configuration.map-underscore-to-camel-case = true`以启用下划线到驼峰命名风格的映射。
