@@ -32,6 +32,7 @@
 ## 配置
 - 需要使用注解`@MapperScan`配置`factoryBean`为`cn.felord.mybatis.MybatisMapperFactoryBean.class`。 
 - 需要配置`mybatis.configuration.map-underscore-to-camel-case = true`以启用下划线到驼峰命名风格的映射。
+
 其它配置参考**Mybatis**自己的配置。
  
  
